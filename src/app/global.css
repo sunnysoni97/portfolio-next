@@ -2,12 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 255, 255, 255;
   --background-end-rgb: 212, 225, 255;
-  /* --background-start-rgb: 212, 225, 250;
-  --background-end-rgb: 255, 255, 255; */
 }
 
 body {
@@ -18,4 +16,4 @@ body {
     rgb(var(--background-end-rgb))
   );
   background-attachment: fixed;
-}
+} */
