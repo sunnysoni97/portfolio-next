@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 import { ColorSchemeScript, createTheme, MantineProvider } from "@mantine/core";
 
-import NavBar from "./components/common/NavBar";
+import { AppLayout } from "@/app/components/common/AppLayout/AppLayout";
 
 import "@/app/global.css";
 import "@mantine/core/styles.css";
@@ -32,10 +32,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className={inter.className}>
         <MantineProvider theme={theme}>
-          <div className="box-border w-[70vw] min-w-[1024px] min-h-[98vh] mx-auto my-[0.5%] rounded border-x-2 border-y-2 border-x-sky-800 border-y-sky-900 ">
-            <NavBar />
-            {children}
-          </div>
+          <AppLayout>{children}</AppLayout>
         </MantineProvider>
       </body>
     </html>
