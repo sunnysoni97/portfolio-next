@@ -4,8 +4,10 @@ export const metadata = {
 
 export default function Projects() {
   return (
-    <>
-      <h1 className="text-2xl"> This is Projects Page </h1>
-    </>
+    <main>
+      <div className="h-screen">
+        <h1 className="text-2xl"> This is Projects Page </h1>
+      </div>
+    </main>
   );
 }
