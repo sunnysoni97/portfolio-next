@@ -41,7 +41,7 @@ const NavBar = (props) => {
   });
 
   return (
-    <Stack>
+    <Stack p="md">
       {btnUrlList.map((value, index) => {
         let isActive = false;
         if (index == idx) {

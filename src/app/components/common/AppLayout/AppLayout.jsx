@@ -7,6 +7,7 @@ import { nprogress } from "@mantine/nprogress";
 
 import { routeBase } from "@/app/siteMetadata";
 import NavBar from "@/app/components/common/NavBar/NavBar";
+import FootNav from "@/app/components/common/FootNav/FootNav";
 
 export function AppLayout({ children }) {
   useEffect(() => {
@@ -57,14 +58,12 @@ export function AppLayout({ children }) {
           </h1>
         </Group>
       </AppShell.Header>
-      <AppShell.Navbar p="md">
+      <AppShell.Navbar>
         <NavBar />
       </AppShell.Navbar>
       <AppShell.Main>{children}</AppShell.Main>
       <AppShell.Footer>
-        <Group h="100%" px="md">
-          <h3> This is footer </h3>
-        </Group>
+        <FootNav />
       </AppShell.Footer>
     </AppShell>
   );
