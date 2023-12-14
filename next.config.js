@@ -1,9 +1,10 @@
 /** @type {import('next').NextConfig} */
 
-const isProd = process.env.NODE_ENV == "production";
+require("dotenv").config();
+const isProdTest = process.env.PROD_TEST;
 
 const nextConfig = {
-  basePath: isProd ? "/portfolio-next" : "",
+  basePath: isProdTest ? "" : "/portfolio-next",
   output: "export",
 };
 
