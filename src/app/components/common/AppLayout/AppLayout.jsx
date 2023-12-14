@@ -2,11 +2,17 @@
 
 import { useDisclosure } from "@mantine/hooks";
 import { AppShell, Burger, Group } from "@mantine/core";
-import nextConfig from "../../../../../next.config";
+import { useEffect } from "react";
+import { nprogress } from "@mantine/nprogress";
 
+import nextConfig from "../../../../../next.config";
 import NavBar from "@/app/components/common/NavBar/NavBar";
 
 export function AppLayout({ children }) {
+  useEffect(() => {
+    nprogress.complete();
+  }, [children]);
+
   const [openedMobile, toggleMobile] = useDisclosure(false);
   const [openedDesktop, toggleDesktop] = useDisclosure(true);
   const basePath = nextConfig.basePath;

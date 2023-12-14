@@ -9,8 +9,9 @@ import {
   SourceCode,
   MessageChatbot,
 } from "tabler-icons-react";
+import { nprogress } from "@mantine/nprogress";
 
-const ButtonDisplay = ({ btnUrl, btnName, btnIcon, btnIsActive }) => {
+const ButtonDisplay = ({ btnUrl, btnName, btnIcon, btnIsActive, curPath }) => {
   const router = useRouter();
 
   return (
@@ -18,6 +19,9 @@ const ButtonDisplay = ({ btnUrl, btnName, btnIcon, btnIsActive }) => {
       rightSection={btnIcon}
       variant={btnIsActive ? "light" : "subtle"}
       onClick={() => {
+        if (curPath != btnUrl) {
+          nprogress.start();
+        }
         router.push(btnUrl);
       }}
       justify="space-between"
@@ -60,6 +64,7 @@ const NavBar = (props) => {
               })
             )}
             btnIsActive={isActive}
+            curPath={pathName}
           />
         );
       })}
