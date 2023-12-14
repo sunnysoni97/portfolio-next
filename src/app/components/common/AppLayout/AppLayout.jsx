@@ -1,14 +1,14 @@
 "use client";
 
 import { useDisclosure } from "@mantine/hooks";
-import { AppShell, Burger, Group, Skeleton, Space } from "@mantine/core";
+import { AppShell, Burger, Group } from "@mantine/core";
+import nextConfig from "../../../../../next.config";
 
 import NavBar from "@/app/components/common/NavBar/NavBar";
 
-import classes from "@/app/components/common/AppLayout/AppLayout.module.css";
-
 export function AppLayout({ children }) {
   const [opened, { toggle }] = useDisclosure();
+  const basePath = nextConfig.basePath;
 
   return (
     <AppShell
@@ -24,7 +24,13 @@ export function AppLayout({ children }) {
         <Group
           h="100%"
           px="md"
-          className={classes.header + " bg-contain bg-repeat"}
+          styles={{
+            root: {
+              backgroundImage: `url(${basePath}/images/layout/header.jpg)`,
+              backgroundAttachment: "fixed",
+            },
+          }}
+          className="bg-contain bg-repeat"
         >
           <Burger opened={opened} onClick={toggle} color="white" />
           <h1 className="text-4xl text-center text-white font-bold font-sans antialiased flex-auto ">
