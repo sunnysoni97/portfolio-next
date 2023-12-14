@@ -5,7 +5,7 @@ import { AppShell, Burger, Group } from "@mantine/core";
 import { useEffect } from "react";
 import { nprogress } from "@mantine/nprogress";
 
-import nextConfig from "../../../../../next.config";
+import { routeBase } from "@/app/siteMetadata";
 import NavBar from "@/app/components/common/NavBar/NavBar";
 
 export function AppLayout({ children }) {
@@ -15,7 +15,6 @@ export function AppLayout({ children }) {
 
   const [openedMobile, toggleMobile] = useDisclosure(false);
   const [openedDesktop, toggleDesktop] = useDisclosure(true);
-  const basePath = nextConfig.basePath;
 
   return (
     <AppShell
@@ -34,7 +33,7 @@ export function AppLayout({ children }) {
           px="md"
           styles={{
             root: {
-              backgroundImage: `url(${basePath}/images/layout/header.jpg)`,
+              backgroundImage: `url(${routeBase}/images/layout/header.jpg)`,
               backgroundAttachment: "fixed",
             },
           }}

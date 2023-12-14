@@ -2,14 +2,9 @@
 
 import { usePathname, useRouter } from "next/navigation";
 import { Button, Stack } from "@mantine/core";
-import {
-  Home,
-  School,
-  Trophy,
-  SourceCode,
-  MessageChatbot,
-} from "tabler-icons-react";
 import { nprogress } from "@mantine/nprogress";
+
+import { routeURIList, routeNameList, routeIconList } from "@/app/siteMetadata";
 
 const ButtonDisplay = ({ btnUrl, btnName, btnIcon, btnIsActive, curPath }) => {
   const router = useRouter();
@@ -20,6 +15,7 @@ const ButtonDisplay = ({ btnUrl, btnName, btnIcon, btnIsActive, curPath }) => {
       variant={btnIsActive ? "light" : "subtle"}
       onClick={() => {
         if (curPath != btnUrl) {
+          nprogress.reset();
           nprogress.start();
         }
         router.push(btnUrl);
@@ -36,9 +32,9 @@ const ButtonDisplay = ({ btnUrl, btnName, btnIcon, btnIsActive, curPath }) => {
 };
 
 const NavBar = (props) => {
-  const btnUrlList = ["/", "/about-me", "/milestones", "/projects", "/contact"];
-  const btnIconList = [Home, School, Trophy, SourceCode, MessageChatbot];
-  const btnNameList = ["Home", "About Me", "Milestones", "Projects", "Contact"];
+  const btnUrlList = routeURIList;
+  const btnIconList = routeIconList;
+  const btnNameList = routeNameList;
   const pathName = usePathname();
   const idx = btnUrlList.findIndex((ele) => {
     return ele == pathName;
