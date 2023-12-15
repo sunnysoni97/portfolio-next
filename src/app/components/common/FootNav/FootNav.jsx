@@ -1,16 +1,22 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
+import Link from "next/link";
 import { Button, Group } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 import { nprogress } from "@mantine/nprogress";
 import { ArrowBigRight, ArrowBigLeft } from "tabler-icons-react";
 
+import postcssConfig from "../../../../../postcss.config";
 import { routeURIList, routeNameList, routeIconList } from "@/app/siteMetadata";
 
 const FootNav = (props) => {
   const router = useRouter();
-
   const curPath = usePathname();
+  const isMobile = useMediaQuery(
+    `(max-width:${postcssConfig.plugins["postcss-simple-vars"].variables["mantine-breakpoint-sm"]})`,
+    false
+  );
   const curIdx = routeURIList.findIndex((ele) => {
     return ele == curPath;
   });
@@ -32,35 +38,57 @@ const FootNav = (props) => {
   };
 
   return (
-    <Group h="100%" w="100%" justify="space-between" gap="sm" px="lg">
-      <Button
-        leftSection={ArrowBigLeft({ ...btnIconProps, color: "#0d9488" })}
-        rightSection={routeIconList[backIdx]({
-          ...btnIconProps,
-          color: "#0d9488",
-        })}
-        onClick={() => {
-          handleClick(routeURIList[backIdx]);
-        }}
-        variant="subtle"
-        classNames={{ label: "text-teal-600 text-base" }}
-      >
-        {routeNameList[backIdx]}
-      </Button>
-      <Button
-        leftSection={routeIconList[fwdIdx]({
-          ...btnIconProps,
-          color: "#134e4a",
-        })}
-        rightSection={ArrowBigRight({ ...btnIconProps, color: "#134e4a" })}
-        onClick={() => {
-          handleClick(routeURIList[fwdIdx]);
-        }}
-        variant="subtle"
-        classNames={{ label: "text-teal-900 text-sm" }}
-      >
-        {routeNameList[fwdIdx]}
-      </Button>
+    <Group
+      h="100%"
+      w="100%"
+      justify="space-between"
+      gap="xs"
+      px={isMobile ? "sm" : "md"}
+      align="center"
+    >
+      <Group w="30%" justify="flex-start">
+        <text className={isMobile ? "text-xs" : "text-sm"}>
+          {"Portfolio source code available "}
+          <Link
+            href="https://github.com/sunnysoni97/portfolio-next/"
+            className="text-blue-400"
+          >
+            {"here."}
+          </Link>
+        </text>
+      </Group>
+      <Group w="60%" justify="flex-end" gap={isMobile ? "sm" : "md"}>
+        <Button
+          leftSection={ArrowBigLeft({ ...btnIconProps, color: "#0d9488" })}
+          rightSection={routeIconList[backIdx]({
+            ...btnIconProps,
+            color: "#0d9488",
+          })}
+          onClick={() => {
+            handleClick(routeURIList[backIdx]);
+          }}
+          variant="light"
+          classNames={{ label: "text-teal-600 text-sm" }}
+          size={isMobile ? "compact-xs" : "compact-md"}
+        >
+          {routeNameList[backIdx]}
+        </Button>
+        <Button
+          leftSection={routeIconList[fwdIdx]({
+            ...btnIconProps,
+            color: "#134e4a",
+          })}
+          rightSection={ArrowBigRight({ ...btnIconProps, color: "#134e4a" })}
+          onClick={() => {
+            handleClick(routeURIList[fwdIdx]);
+          }}
+          variant="light"
+          classNames={{ label: "text-teal-900 text-sm" }}
+          size={isMobile ? "compact-xs" : "compact-md"}
+        >
+          {routeNameList[fwdIdx]}
+        </Button>
+      </Group>
     </Group>
   );
 };
