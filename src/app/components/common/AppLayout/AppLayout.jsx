@@ -26,7 +26,7 @@ export function AppLayout({ children }) {
         collapsed: { mobile: !openedMobile, desktop: !openedDesktop },
       }}
       footer={{ height: { base: 30, md: 35, lg: 40 }, offset: true }}
-      padding="md"
+      padding={{ base: "md", md: "lg", lg: "xl" }}
     >
       <AppShell.Header>
         <Group

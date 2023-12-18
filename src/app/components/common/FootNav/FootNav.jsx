@@ -3,20 +3,16 @@
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import { Button, Group } from "@mantine/core";
-import { useMediaQuery } from "@mantine/hooks";
 import { nprogress } from "@mantine/nprogress";
 import { ArrowBigRight, ArrowBigLeft } from "tabler-icons-react";
 
-import postcssConfig from "../../../../../postcss.config";
 import { routeURIList, routeNameList, routeIconList } from "@/app/siteMetadata";
+import CheckMobile from "@/app/components/common/CheckMobile";
 
 const FootNav = (props) => {
   const router = useRouter();
   const curPath = usePathname();
-  const isMobile = useMediaQuery(
-    `(max-width:${postcssConfig.plugins["postcss-simple-vars"].variables["mantine-breakpoint-sm"]})`,
-    false
-  );
+  const isMobile = CheckMobile();
   const curIdx = routeURIList.findIndex((ele) => {
     return ele == curPath;
   });
