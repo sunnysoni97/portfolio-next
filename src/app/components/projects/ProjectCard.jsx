@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import { CodeCircle } from "tabler-icons-react";
 import CheckMobile from "@/app/components/common/CheckMobile";
 
+import { basePath } from "../../../../next.config";
+
 const ProjectCard = ({
   title = "Project Title",
   imgUrl = "/images/test_image.png",
@@ -30,7 +32,11 @@ const ProjectCard = ({
       </Card.Section>
 
       <Card.Section withBorder>
-        <Image src={imgUrl} w="100%" alt={`Banner Image of ${title}`} />
+        <Image
+          src={`${basePath}/${imgUrl}`}
+          w="100%"
+          alt={`Banner Image of ${title}`}
+        />
       </Card.Section>
 
       <Card.Section inheritPadding withBorder>
