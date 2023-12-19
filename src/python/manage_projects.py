@@ -78,6 +78,9 @@ def edit_project(json_data: List[dict]):
                 new_key = input(f"{key} : ")
                 if len(new_key) > 0:
                     json_data[proj_n][key] = new_key
+            json_data[proj_n]["highlight"] = json.loads(
+                json_data[proj_n]["highlight"].lower()
+            )
             write_list(json_obj=json_data)
     except Exception as ex:
         print(f"failed to edit : {ex}")
