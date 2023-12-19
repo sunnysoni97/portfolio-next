@@ -52,10 +52,9 @@ export function AppLayout({ children }) {
             color="white"
             visibleFrom="md"
           />
-          <h1 className="text-4xl text-center text-white font-bold font-sans antialiased flex-auto ">
-            {" "}
-            Vitaelia{" "}
-          </h1>
+          <text className="text-4xl text-center text-white font-bold font-sans antialiased flex-auto">
+            {"Vitaelia"}
+          </text>
         </Group>
       </AppShell.Header>
       <AppShell.Navbar>

@@ -42,18 +42,22 @@ const FootNav = (props) => {
       px={isMobile ? "sm" : "md"}
       align="center"
     >
-      <Group w="30%" justify="flex-start">
+      <Group w={isMobile ? "40%" : "35%"} justify="flex-start">
         <text className={isMobile ? "text-xs" : "text-sm"}>
           {"Portfolio source code available "}
           <Link
             href="https://github.com/sunnysoni97/portfolio-next/"
-            className="text-blue-400"
+            className="text-blue-600 no-underline"
           >
             {"here."}
           </Link>
         </text>
       </Group>
-      <Group w="60%" justify="flex-end" gap={isMobile ? "sm" : "md"}>
+      <Group
+        w={isMobile ? "55%" : "60%"}
+        justify="flex-end"
+        gap={isMobile ? "sm" : "md"}
+      >
         <Button
           leftSection={ArrowBigLeft({ ...btnIconProps, color: "#0d9488" })}
           rightSection={routeIconList[backIdx]({
