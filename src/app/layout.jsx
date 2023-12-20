@@ -7,6 +7,7 @@ import { AppLayout } from "@/app/components/common/AppLayout/AppLayout";
 import "@/app/global.css";
 import "@mantine/core/styles.css";
 import "@mantine/nprogress/styles.css";
+import "@mantine/carousel/styles.css";
 
 const inter = Inter({ subsets: ["latin"] });
 

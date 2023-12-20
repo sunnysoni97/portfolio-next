@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import ProjectGallery from "@/app/components/projects/ProjectGallery";
+import ProjectCarousel from "@/app/components/projects/ProjectCarousel";
 
 export const metadata = {
   title: "Projects",
@@ -24,7 +25,11 @@ export default function Projects() {
         }
       </text>
       <br />
-      <h2 className="text-2xl font-bold block">{"Full List"}</h2>
+      <h2 className="text-2xl font-bold block">{"Spotlight"}</h2>
+      <br />
+      <ProjectCarousel />
+      <br />
+      <h2 className="text-2xl font-bold block">{"List of Projects"}</h2>
       <br />
       <ProjectGallery />
     </>
