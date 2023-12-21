@@ -102,7 +102,11 @@ const ProjectCarousel = (props) => {
       withIndicators
       w={{ sm: 640, md: 768, lg: 1024 }}
       mx="auto"
-      classNames={{ indicator: "!bg-orange-500", indicators: "w-[50%]" }}
+      classNames={{
+        indicator: "!bg-orange-500",
+        indicators: "w-[50%]",
+        control: "!border-transparent !bg-transparent !shadow-none",
+      }}
       plugins={[autoplay.current]}
       onMouseEnter={autoplay.current.stop}
       onMouseLeave={autoplay.current.reset}
