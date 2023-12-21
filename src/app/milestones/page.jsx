@@ -1,3 +1,7 @@
+import MilestonesLayout from "@/app/components/milestones/MilestonesLayout";
+import TimelineOverview from "@/app/components/milestones/TimelineOverview";
+import TimelineSlider from "@/app/components/milestones/TimelineSlider";
+
 export const metadata = {
   title: "Milestones",
 };
@@ -5,7 +9,10 @@ export const metadata = {
 export default function Milestones() {
   return (
     <>
-      <h1 className="text-2xl"> This is Milestones Page. </h1>
+      <MilestonesLayout
+        overview={<TimelineOverview />}
+        slider={<TimelineSlider />}
+      />
     </>
   );
 }
