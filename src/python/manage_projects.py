@@ -45,8 +45,13 @@ def add_project(json_data: List[dict], json_keys: List[str], file_path: Path) ->
     try:
         new_project = {}
         for key in json_keys:
-            new_project[key] = input(f"{key} : ")
+            new_value = input(f"{key} : ")
+            if new_value == "":
+                new_value = "1"
+            new_project[key] = new_value
         if "highlight" in json_keys:
+            if new_project["highlight"] == "1":
+                new_project["highlight"] = "false"
             new_project["highlight"] = json.loads(new_project["highlight"].lower())
         json_data.append(new_project)
         write_list(json_obj=json_data, file_path=file_path)
@@ -126,17 +131,15 @@ MENU_FUNCS = [add_project, view_list, edit_project, reorder_list, del_project, e
 
 FILE_DIR = Path(os.path.dirname(__file__)).parent
 
+tgt_list = ["projects", "milestones_timeline", "milestones_slider"]
+
 parser = argparse.ArgumentParser()
-parser.add_argument("--target", type=str, default="projects")
+parser.add_argument("--target", type=str, default="projects", choices=tgt_list)
 
 
 if __name__ == "__main__":
     args = parser.parse_args()
     tgt = args.target
-
-    tgt_list = ["projects", "milestones_timeline", "milestones_slider"]
-
-    assert tgt in tgt_list, f"target json incorrect. choose one from : {tgt_list}"
 
     tgt_idx = tgt_list.index(tgt)
     tgt_paths = [
@@ -147,7 +150,7 @@ if __name__ == "__main__":
     tgt_json_keys = [
         ["title", "desc", "imgUrl", "repoUrl", "highlight"],
         ["year", "title", "desc"],
-        ["year", "title", "desc", "imgUrl"],
+        ["year", "month", "title", "desc", "imgUrl"],
     ]
 
     json_keys = tgt_json_keys[tgt_idx]
