@@ -3,9 +3,13 @@
 import { Text } from "@mantine/core";
 import Link from "next/link";
 
+import CheckMobile from "@/app/components/common/CheckMobile";
+
 const SourceCodeCite = (props) => {
+  const isMobile = CheckMobile();
+
   return (
-    <Text className="!text-sm">
+    <Text className={isMobile ? "!text-xs" : "!text-sm"}>
       {
         "Portfolio designed using NextJS with Mantine. Source code available at the repository "
       }

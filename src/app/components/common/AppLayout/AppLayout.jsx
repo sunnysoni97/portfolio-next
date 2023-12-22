@@ -35,7 +35,10 @@ export function AppLayout({ children }) {
           styles={{
             root: {
               backgroundImage: `url(${routeBase}/images/layout/header.jpg)`,
-              backgroundAttachment: "fixed",
+              backgroundAttachment: "scroll",
+              backgroundSize: "auto 100%",
+              backgroundPosition: "center",
+              backgroundRepeat: "repeat-x",
             },
           }}
           className="bg-contain bg-repeat"
