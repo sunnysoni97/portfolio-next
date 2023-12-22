@@ -1,6 +1,6 @@
 "use client";
 
-import { Slider } from "@mantine/core";
+import { Slider, Text } from "@mantine/core";
 
 const SliderControl = ({ sliderData, selectedYearSetter }) => {
   const yearLow = parseInt(sliderData[0].year);
@@ -13,17 +13,25 @@ const SliderControl = ({ sliderData, selectedYearSetter }) => {
   }
 
   return (
-    <Slider
-      min={yearLow}
-      max={yearHigh}
-      onChangeEnd={selectedYearSetter}
-      marks={marks}
-      labelTransitionProps={{
-        transition: "slide-up",
-        duration: 125,
-        timingFunction: "linear",
-      }}
-    />
+    <>
+      <Text className="text-center !text-sm">
+        {"(Drag the slider to any year)"}
+      </Text>
+      <br />
+      <Slider
+        min={yearLow}
+        max={yearHigh}
+        onChangeEnd={selectedYearSetter}
+        marks={marks}
+        labelTransitionProps={{
+          transition: "slide-up",
+          duration: 125,
+          timingFunction: "linear",
+        }}
+        size="lg"
+        classNames={{ markLabel: "font-bold !text-lg" }}
+      />
+    </>
   );
 };
 

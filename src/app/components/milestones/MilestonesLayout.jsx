@@ -1,6 +1,6 @@
 "use client";
 
-import { Flex, Stack, Divider } from "@mantine/core";
+import { Flex, Stack, Divider, Text } from "@mantine/core";
 import CheckMobile from "@/app/components/common/CheckMobile";
 
 const MilestonesLayout = ({ overview = "", slider = "" }) => {
@@ -8,9 +8,9 @@ const MilestonesLayout = ({ overview = "", slider = "" }) => {
 
   return (
     <div className="[w-100%]">
-      <text className="text-2xl font-bold block">
+      <Text className="!text-2xl !font-bold !block">
         {"Timeline of Milestones"}
-      </text>
+      </Text>
       <Divider my="md" />
       <Flex
         direction={isMobile ? "column" : "row"}
@@ -23,7 +23,7 @@ const MilestonesLayout = ({ overview = "", slider = "" }) => {
           className="shadow-lg rounded-lg"
           p="md"
         >
-          <text className="text-xl font-bold block">{"Overview"}</text>
+          <Text className="!text-xl !font-bold !block">{"Overview"}</Text>
           {overview}
         </Stack>
         <Stack
@@ -31,9 +31,9 @@ const MilestonesLayout = ({ overview = "", slider = "" }) => {
           className="shadow-lg rounded-lg"
           p="md"
         >
-          <text className="text-xl font-bold block">
+          <Text className="!text-xl !font-bold !block">
             {"Interactive Slider"}
-          </text>
+          </Text>
           {slider}
         </Stack>
       </Flex>

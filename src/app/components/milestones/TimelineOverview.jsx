@@ -1,6 +1,6 @@
 "use client";
 
-import { Timeline, Divider } from "@mantine/core";
+import { Timeline, Divider, Text } from "@mantine/core";
 import { MoodSmile } from "tabler-icons-react";
 
 import CheckMobile from "@/app/components/common/CheckMobile";
@@ -11,7 +11,7 @@ const getNumberIcon = (year) => {
   const secondDig = year.slice(-1);
 
   return (
-    <text className="font-bold text-sm">{`${firstDig} ${secondDig}`}</text>
+    <Text className="!font-bold !text-sm">{`${firstDig} ${secondDig}`}</Text>
   );
 };
 
@@ -45,16 +45,18 @@ const TimelineOverview = (props) => {
                 index == overviewData.length - 1 ? "dashed" : "solid"
               }
             >
-              <text className="block text-sm font-bold opacity-70">
+              <Text className="!block !text-sm !font-bold !opacity-70">
                 {value.year}
-              </text>
+              </Text>
               <Divider mt={2} mb={4} />
-              <text className="block">{value.desc}</text>
+              <Text className="!block">{value.desc}</Text>
             </Timeline.Item>
           );
         })}
         <Timeline.Item bullet={<MoodSmile size={40} />}>
-          <text className="font-bold italic">{"...Future is Loading..."}</text>
+          <Text className="!font-bold !italic">
+            {"...Future is Loading..."}
+          </Text>
         </Timeline.Item>
       </Timeline>
     </>
