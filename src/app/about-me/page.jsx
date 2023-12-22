@@ -1,11 +1,9 @@
+import AboutMeLayout from "@/app/components/about-me/AboutMeLayout";
+
 export const metadata = {
   title: "About Me",
 };
 
 export default function AboutMe() {
-  return (
-    <>
-      <h1 className="text-2xl"> This is About Me Page </h1>
-    </>
-  );
+  return <AboutMeLayout />;
 }

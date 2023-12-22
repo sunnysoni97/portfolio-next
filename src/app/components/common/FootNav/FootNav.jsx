@@ -1,13 +1,13 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import Link from "next/link";
 import { Button, Group } from "@mantine/core";
 import { nprogress } from "@mantine/nprogress";
 import { ArrowBigRight, ArrowBigLeft } from "tabler-icons-react";
 
 import { routeURIList, routeNameList, routeIconList } from "@/app/siteMetadata";
 import CheckMobile from "@/app/components/common/CheckMobile";
+import SourceCodeCite from "@/app/components/common/AppLayout/SourceCodeCite";
 
 const FootNav = (props) => {
   const router = useRouter();
@@ -36,26 +36,21 @@ const FootNav = (props) => {
   return (
     <Group
       h="100%"
-      w="100%"
       justify="space-between"
       gap="xs"
-      px={isMobile ? "sm" : "md"}
+      px={{ base: "sm", md: "md" }}
       align="center"
+      wrap="nowrap"
     >
-      <Group w={isMobile ? "40%" : "35%"} justify="flex-start">
-        <text className={isMobile ? "text-xs" : "text-sm"}>
-          {"Portfolio source code available "}
-          <Link
-            href="https://github.com/sunnysoni97/portfolio-next/"
-            className="text-blue-600 no-underline"
-          >
-            {"here."}
-          </Link>
-        </text>
-      </Group>
+      {isMobile ? null : (
+        <Group w="40%" justify="flex-start">
+          <SourceCodeCite />
+        </Group>
+      )}
+
       <Group
-        w={isMobile ? "55%" : "60%"}
-        justify="flex-end"
+        w={isMobile ? "100%" : "60%"}
+        justify={isMobile ? "space-between" : "flex-end"}
         gap={isMobile ? "sm" : "md"}
       >
         <Button
