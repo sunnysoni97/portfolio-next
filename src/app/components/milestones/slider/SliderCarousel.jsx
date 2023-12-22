@@ -23,9 +23,8 @@ const CarouselCard = ({ entryData }) => {
   );
 };
 
-const SliderCarousel = ({ yearData }) => {
+const SliderCarousel = ({ yearData, selectedSlide, setSelectedSlide }) => {
   const [embla, setEmbla] = useState(null);
-  const [selectedSlide, setSelectedSlide] = useState(0);
 
   const handleDescChange = useCallback(() => {
     if (!embla) {

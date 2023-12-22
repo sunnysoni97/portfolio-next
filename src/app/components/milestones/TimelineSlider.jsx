@@ -20,10 +20,12 @@ const getYearData = ({ completeData, year }) => {
 const TimelineSlider = (props) => {
   const [selectedYear, setSelectedYear] = useState(0);
   const [selectedYearData, setSelectedYearData] = useState([]);
+  const [selectedSlide, setSelectedSlide] = useState(0);
 
   const sliderData = LoadSliderData();
 
   useEffect(() => {
+    setSelectedSlide(0);
     setSelectedYearData(
       getYearData({ completeData: sliderData, year: selectedYear })
     );
@@ -51,7 +53,11 @@ const TimelineSlider = (props) => {
       </div>
       <br />
       <div className="w-[75%] mx-auto">
-        <SliderCarousel yearData={selectedYearData} />
+        <SliderCarousel
+          yearData={selectedYearData}
+          selectedSlide={selectedSlide}
+          setSelectedSlide={setSelectedSlide}
+        />
       </div>
     </Stack>
   );
