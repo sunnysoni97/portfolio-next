@@ -8,9 +8,7 @@ const MilestonesLayout = ({ overview = "", slider = "" }) => {
 
   return (
     <div className="[w-100%]">
-      <Text className="!text-2xl !font-bold !block">
-        {"Timeline of Milestones"}
-      </Text>
+      <Text className="!text-2xl !font-bold">{"Timeline of Milestones"}</Text>
       <Divider my="md" />
       <Flex
         direction={isMobile ? "column" : "row"}
@@ -23,7 +21,7 @@ const MilestonesLayout = ({ overview = "", slider = "" }) => {
           className="shadow-lg rounded-lg"
           p="md"
         >
-          <Text className="!text-xl !font-bold !block">{"Overview"}</Text>
+          <Text className="!text-xl !font-bold">{"Overview"}</Text>
           {overview}
         </Stack>
         <Stack
@@ -31,9 +29,7 @@ const MilestonesLayout = ({ overview = "", slider = "" }) => {
           className="shadow-lg rounded-lg"
           p="md"
         >
-          <Text className="!text-xl !font-bold !block">
-            {"Interactive Slider"}
-          </Text>
+          <Text className="!text-xl !font-bold">{"Interactive Slider"}</Text>
           {slider}
         </Stack>
       </Flex>

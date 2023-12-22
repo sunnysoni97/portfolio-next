@@ -45,11 +45,11 @@ const TimelineOverview = (props) => {
                 index == overviewData.length - 1 ? "dashed" : "solid"
               }
             >
-              <Text className="!block !text-sm !font-bold !opacity-70">
+              <Text className="!text-sm !font-bold !opacity-70">
                 {value.year}
               </Text>
               <Divider mt={2} mb={4} />
-              <Text className="!block">{value.desc}</Text>
+              <Text>{value.desc}</Text>
             </Timeline.Item>
           );
         })}

@@ -3,7 +3,7 @@
 import { Carousel } from "@mantine/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { useRef } from "react";
-import { Group, Stack, Image, Button, Paper } from "@mantine/core";
+import { Group, Stack, Image, Button, Paper, Text } from "@mantine/core";
 import { InnerShadowLeft, InnerShadowRight } from "tabler-icons-react";
 import { useRouter } from "next/navigation";
 
@@ -37,12 +37,12 @@ const CarouselSlide = ({ title, desc, imgUrl, repoUrl }) => {
         </Stack>
         <Stack h="100%" align="stretch" w="50%" justify="flex-start" px="xs">
           <div className="flex h-[20%] justify-start items-start pt-6">
-            <text className="text-xl font-bold">{title}</text>
+            <Text className="!text-xl !font-bold">{title}</Text>
           </div>
           <div className="flex h-[65%] items-start py-6">
-            <text className="text-justify text-lg">
+            <Text className="!text-justify !text-lg">
               {`${desc.slice(0, 100)}...`}
-            </text>
+            </Text>
           </div>
           <div className="flex h-[15%] justify-center items-center">
             <Button

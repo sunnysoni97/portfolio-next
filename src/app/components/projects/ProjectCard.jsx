@@ -1,6 +1,6 @@
 "use client";
 
-import { Card, Image, Button, Spoiler } from "@mantine/core";
+import { Card, Image, Button, Spoiler, Text } from "@mantine/core";
 import { useRouter } from "next/navigation";
 import { CodeCircle } from "tabler-icons-react";
 import CheckMobile from "@/app/components/common/CheckMobile";
@@ -24,11 +24,11 @@ const ProjectCard = ({
       withBorder
     >
       <Card.Section inheritPadding withBorder>
-        <text
-          className={`${isMobile ? "text-lg" : "text-xl"} font-bold block py-2`}
+        <Text
+          className={`${isMobile ? "!text-lg" : "!text-xl"} !font-bold !py-2`}
         >
           {title}
-        </text>
+        </Text>
       </Card.Section>
 
       <Card.Section withBorder>

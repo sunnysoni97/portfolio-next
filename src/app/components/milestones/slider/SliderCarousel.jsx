@@ -9,9 +9,7 @@ import { basePath } from "../../../../../next.config";
 const CarouselCard = ({ entryData }) => {
   return (
     <Stack h="100%">
-      <Text className="!text-xl !font-bold !block text-center">
-        {entryData.title}
-      </Text>
+      <Text className="!text-xl !font-bold text-center">{entryData.title}</Text>
       <Divider my="sm" />
       <div className="h-[80%]">
         <Image
@@ -94,10 +92,7 @@ const SliderCarousel = ({ yearData }) => {
           );
         })}
       </Carousel>
-      <Text
-        className="!block !text-lg !text-center"
-        w={{ base: "90%", xl: "35%" }}
-      >
+      <Text className="!text-lg !text-center" w={{ base: "90%", xl: "35%" }}>
         {yearData[selectedSlide].desc}
       </Text>
     </Flex>
