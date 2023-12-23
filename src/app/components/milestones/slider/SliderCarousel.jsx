@@ -1,16 +1,17 @@
 "use client";
 
-import { Stack, Image, Divider, Text, Flex } from "@mantine/core";
+import { Stack, Image, Text, Flex } from "@mantine/core";
 import { Carousel } from "@mantine/carousel";
 import { useState, useCallback, useEffect } from "react";
 
 import { basePath } from "../../../../../next.config";
+import CheckMobile from "@/app/components/common/CheckMobile";
 
 const CarouselCard = ({ entryData }) => {
+  const isMobile = CheckMobile();
   return (
-    <Stack h="100%">
-      <Text className="!text-xl !font-bold text-center">{entryData.title}</Text>
-      <Divider my="sm" />
+    <Stack h="100%" gap={isMobile ? 0 : "md"}>
+      <Text className="!text-lg !font-bold text-center">{entryData.title}</Text>
       <div className="h-[80%]">
         <Image
           src={`${basePath}/${entryData.imgUrl}`}
@@ -25,6 +26,7 @@ const CarouselCard = ({ entryData }) => {
 
 const SliderCarousel = ({ yearData, selectedSlide, setSelectedSlide }) => {
   const [embla, setEmbla] = useState(null);
+  const isMobile = CheckMobile();
 
   const handleDescChange = useCallback(() => {
     if (!embla) {
@@ -55,6 +57,12 @@ const SliderCarousel = ({ yearData, selectedSlide, setSelectedSlide }) => {
     );
   }
 
+  const getMonthStr = (monthNum) => {
+    const date = new Date();
+    date.setMonth(monthNum - 1);
+    return date.toLocaleString("en-US", { month: "long" });
+  };
+
   return (
     <Flex
       align="center"
@@ -67,12 +75,10 @@ const SliderCarousel = ({ yearData, selectedSlide, setSelectedSlide }) => {
     >
       <Carousel
         orientation="vertical"
-        height={600}
+        height={isMobile ? 300 : 500}
         slideSize="100%"
-        slideGap={"xl"}
-        align={"start"}
         controlSize={36}
-        controlsOffset={"xl"}
+        controlsOffset="md"
         withIndicators
         classNames={{
           indicator: "!bg-orange-500",
@@ -91,9 +97,15 @@ const SliderCarousel = ({ yearData, selectedSlide, setSelectedSlide }) => {
           );
         })}
       </Carousel>
-      <Text className="!text-lg !text-center" w={{ base: "90%", xl: "35%" }}>
-        {yearData[selectedSlide].desc}
-      </Text>
+      <Stack w={{ base: "90%", xl: "35%" }}>
+        <Text className="!text-base !text-center">
+          {yearData[selectedSlide].desc}
+          <br />
+          <Text className="opacity-50 inline !text-sm !font-bold">
+            ({getMonthStr(yearData[selectedSlide].month)})
+          </Text>
+        </Text>
+      </Stack>
     </Flex>
   );
 };

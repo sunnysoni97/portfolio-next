@@ -12,9 +12,9 @@ const MilestonesLayout = ({ overview = "", slider = "" }) => {
       <Divider my="md" />
       <Flex
         direction={isMobile ? "column" : "row"}
-        gap={{ sm: "md", md: "lg", lg: "xl" }}
+        gap={{ base: "md", md: "lg", lg: "xl" }}
         align={isMobile ? "center" : "flex-start"}
-        p={{ sm: "lg", md: "md", lg: "sm" }}
+        p={{ base: 0, md: "md", lg: "sm" }}
       >
         <Stack
           w={isMobile ? "100%" : "30%"}
@@ -29,7 +29,7 @@ const MilestonesLayout = ({ overview = "", slider = "" }) => {
           className="shadow-lg rounded-lg"
           p="md"
         >
-          <Text className="!text-xl !font-bold">{"Interactive Slider"}</Text>
+          <Text className="!text-xl !font-bold">{"Year-in-Pictures"}</Text>
           {slider}
         </Stack>
       </Flex>
