@@ -11,7 +11,7 @@ const SourceCodeCite = (props) => {
   return (
     <Text className={isMobile ? "!text-xs" : "!text-sm"}>
       {
-        "Portfolio designed using NextJS with Mantine. Source code available at the repository "
+        "Portfolio designed using NextJS with Mantine. Source code available at my git repository "
       }
       <Link
         href="https://github.com/sunnysoni97/portfolio-next/"

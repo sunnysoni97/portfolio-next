@@ -1,25 +1,20 @@
 "use client";
 
-import { Flex } from "@mantine/core";
+import { SimpleGrid } from "@mantine/core";
 
-import CheckMobile from "@/app/components/common/CheckMobile";
 import ProjectCard from "@/app/components/projects/ProjectCard";
 import LoadProjects from "@/app/components/projects/LoadProjects";
 
 const ProjectGallery = (props) => {
-  const isMobile = CheckMobile();
-
   const project_list = LoadProjects();
 
   return (
-    <Flex
-      align={isMobile ? "center" : "flex-start"}
-      direction={{ base: "column", md: "row" }}
-      columnGap={{ base: "xl" }}
-      rowGap={{ base: "xl" }}
-      justify={{ base: "flex-start" }}
-      wrap="wrap"
-      className={`w-[80%] mx-auto`}
+    <SimpleGrid
+      cols={{ base: 1, md: 2, lg: 3, xl: 4 }}
+      verticalSpacing={{ base: "md", sm: "xl" }}
+      spacing={{ base: "md", sm: "lg" }}
+      mx="auto"
+      w={{ base: "90%", sm: "100%" }}
     >
       {project_list.map((proj, index) => {
         return (
@@ -32,7 +27,7 @@ const ProjectGallery = (props) => {
           />
         );
       })}
-    </Flex>
+    </SimpleGrid>
   );
 };
 

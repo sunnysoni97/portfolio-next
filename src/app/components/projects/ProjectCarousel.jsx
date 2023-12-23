@@ -14,34 +14,48 @@ import { basePath } from "../../../../next.config";
 
 const CarouselSlide = ({ title, desc, imgUrl, repoUrl }) => {
   const router = useRouter();
+  const isMobile = CheckMobile();
 
   return (
     <Paper w="100%" h="100%" radius={"lg"} withBorder className="!shadow-inner">
       <Group
-        h="100%"
-        w="100%"
+        h={{ base: 300, md: 400, lg: 500 }}
         align="stretch"
         wrap="nowrap"
-        justify="space-around"
         gap="xs"
+        justify="space-between"
       >
-        <Stack h="100%" align="center" w="50%" justify="center">
-          <Image
-            classNames={{ root: "!rounded-l-lg" }}
-            src={`${basePath}/${imgUrl}`}
-            height="100%"
-            alt={`Banner image of Project : ${desc}`}
-            opacity={0.8}
-            fit="cover"
-          />
-        </Stack>
-        <Stack h="100%" align="stretch" w="50%" justify="flex-start" px="xs">
-          <div className="flex h-[20%] justify-start items-start pt-6">
-            <Text className="!text-xl !font-bold">{title}</Text>
+        <Image
+          classNames={{ root: "!rounded-l-lg" }}
+          src={`${basePath}/${imgUrl}`}
+          alt={`Banner image of Project : ${desc}`}
+          w={isMobile ? "40%" : "50%"}
+          fit="cover"
+        />
+
+        <Stack justify="flex-start" px="xs" w={isMobile ? "60%" : "50%"}>
+          <div
+            className={`${
+              isMobile ? "h-[15%] pt-2" : "h-[20%] pt-6"
+            }  flex justify-start items-start`}
+          >
+            <Text
+              className={`${isMobile ? "!text-base" : "!text-xl"} !font-bold`}
+            >
+              {title}
+            </Text>
           </div>
-          <div className="flex h-[65%] items-start py-6">
-            <Text className="!text-justify !text-lg">
-              {`${desc.slice(0, 100)}...`}
+          <div
+            className={`${
+              isMobile ? "h-[70%] py-2" : "h-[65%] py-6"
+            } flex  items-start `}
+          >
+            <Text
+              className={`${
+                isMobile ? "!text-base" : "!text-lg"
+              } !text-justify`}
+            >
+              {`${isMobile ? desc.slice(0, 40) : desc.slice(0, 100)}...`}
             </Text>
           </div>
           <div className="flex h-[15%] justify-center items-center">
@@ -50,7 +64,7 @@ const CarouselSlide = ({ title, desc, imgUrl, repoUrl }) => {
                 router.push(repoUrl);
               }}
               variant="transparent"
-              size="compact-md"
+              size={isMobile ? "compact-sm" : "compact-md"}
             >
               {"Check It Out!"}
             </Button>
@@ -96,7 +110,7 @@ const ProjectCarousel = (props) => {
           opacity={0.6}
         />
       }
-      controlsOffset={isMobile ? "md" : "sm"}
+      controlsOffset={isMobile ? "sm" : "md"}
       align="center"
       loop
       withIndicators
@@ -104,7 +118,7 @@ const ProjectCarousel = (props) => {
       mx="auto"
       classNames={{
         indicator: "!bg-orange-500",
-        indicators: "w-[50%]",
+        indicators: isMobile ? "w-[40%]" : "w-[50%]",
         control: "!border-transparent !bg-transparent !shadow-none",
       }}
       plugins={[autoplay.current]}
