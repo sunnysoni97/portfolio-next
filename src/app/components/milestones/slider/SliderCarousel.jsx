@@ -2,7 +2,8 @@
 
 import { Stack, Image, Text, Flex } from "@mantine/core";
 import { Carousel } from "@mantine/carousel";
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
+import Autoplay from "embla-carousel-autoplay";
 
 import { basePath } from "../../../../../next.config";
 import CheckMobile from "@/app/components/common/CheckMobile";
@@ -25,6 +26,7 @@ const CarouselCard = ({ entryData }) => {
 };
 
 const SliderCarousel = ({ yearData, selectedSlide, setSelectedSlide }) => {
+  const autoplay = useRef(Autoplay({ delay: 4000 }));
   const [embla, setEmbla] = useState(null);
   const isMobile = CheckMobile();
 
@@ -88,6 +90,9 @@ const SliderCarousel = ({ yearData, selectedSlide, setSelectedSlide }) => {
         getEmblaApi={setEmbla}
         loop
         w={{ base: "90%", xl: "65%" }}
+        plugins={[autoplay.current]}
+        onMouseEnter={autoplay.current.stop}
+        onMouseLeave={autoplay.current.reset}
       >
         {yearData.map((entry, index) => {
           return (

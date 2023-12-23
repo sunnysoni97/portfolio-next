@@ -76,7 +76,7 @@ const CarouselSlide = ({ title, desc, imgUrl, repoUrl }) => {
 };
 
 const ProjectCarousel = (props) => {
-  const autoplay = useRef(Autoplay({ delay: 6000 }));
+  const autoplay = useRef(Autoplay({ delay: 5000 }));
   const isMobile = CheckMobile();
   const projectList = LoadProjects();
 
