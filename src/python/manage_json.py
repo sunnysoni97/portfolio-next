@@ -131,7 +131,7 @@ MENU_FUNCS = [add_project, view_list, edit_project, reorder_list, del_project, e
 
 FILE_DIR = Path(os.path.dirname(__file__)).parent
 
-tgt_list = ["projects", "milestones_timeline", "milestones_slider"]
+tgt_list = ["projects", "milestones_timeline", "milestones_slider", "aboutme_workex"]
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--target", type=str, default="projects", choices=tgt_list)
@@ -146,11 +146,13 @@ if __name__ == "__main__":
         Path("projects", "_posts", "project_list.json"),
         Path("milestones", "_posts", "timeline_data.json"),
         Path("milestones", "_posts", "slider_data.json"),
+        Path("about-me", "_posts", "work_ex.json"),
     ]
     tgt_json_keys = [
         ["title", "desc", "imgUrl", "repoUrl", "highlight"],
         ["year", "title", "desc"],
         ["year", "month", "title", "desc", "imgUrl"],
+        ["start_year", "start_month", "end_year", "end_month", "title", "desc"],
     ]
 
     json_keys = tgt_json_keys[tgt_idx]

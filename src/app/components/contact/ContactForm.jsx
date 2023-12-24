@@ -31,6 +31,8 @@ const ContactForm = () => {
         placeholder={content}
         className="self-stretch"
         onChange={setContent}
+        minRows={16}
+        autosize="true"
       />
       <Button
         onClick={(e) => {
