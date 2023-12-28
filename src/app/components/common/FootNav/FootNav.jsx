@@ -16,9 +16,8 @@ const FootNav = (props) => {
   const curIdx = routeURIList.findIndex((ele) => {
     return ele == curPath;
   });
-  const backIdx = curIdx - 1 >= 0 ? curIdx - 1 : 0;
-  const fwdIdx =
-    curIdx + 1 < routeNameList.length ? curIdx + 1 : routeNameList.length - 1;
+  const backIdx = curIdx - 1 >= 0 ? curIdx - 1 : -100;
+  const fwdIdx = curIdx + 1 < routeNameList.length ? curIdx + 1 : +100;
 
   const handleClick = (url) => {
     if (curPath != url) {
@@ -53,36 +52,43 @@ const FootNav = (props) => {
         justify={isMobile ? "space-between" : "flex-end"}
         gap={isMobile ? "sm" : "md"}
       >
-        <Button
-          leftSection={ArrowBigLeft({ ...btnIconProps, color: "#0d9488" })}
-          rightSection={routeIconList[backIdx]({
-            ...btnIconProps,
-            color: "#0d9488",
-          })}
-          onClick={() => {
-            handleClick(routeURIList[backIdx]);
-          }}
-          variant="light"
-          classNames={{ label: "text-teal-600 text-sm" }}
-          size={isMobile ? "compact-xs" : "compact-md"}
-        >
-          {routeNameList[backIdx]}
-        </Button>
-        <Button
-          leftSection={routeIconList[fwdIdx]({
-            ...btnIconProps,
-            color: "#134e4a",
-          })}
-          rightSection={ArrowBigRight({ ...btnIconProps, color: "#134e4a" })}
-          onClick={() => {
-            handleClick(routeURIList[fwdIdx]);
-          }}
-          variant="light"
-          classNames={{ label: "text-teal-900 text-sm" }}
-          size={isMobile ? "compact-xs" : "compact-md"}
-        >
-          {routeNameList[fwdIdx]}
-        </Button>
+        {backIdx != -100 ? (
+          <Button
+            leftSection={ArrowBigLeft({ ...btnIconProps, color: "#0d9488" })}
+            rightSection={routeIconList[backIdx]({
+              ...btnIconProps,
+              color: "#0d9488",
+            })}
+            onClick={() => {
+              handleClick(routeURIList[backIdx]);
+            }}
+            variant="light"
+            classNames={{ label: "text-teal-600 text-sm" }}
+            size={isMobile ? "compact-xs" : "compact-md"}
+          >
+            {routeNameList[backIdx]}
+          </Button>
+        ) : (
+          <span></span>
+        )}
+
+        {fwdIdx != 100 ? (
+          <Button
+            leftSection={routeIconList[fwdIdx]({
+              ...btnIconProps,
+              color: "#134e4a",
+            })}
+            rightSection={ArrowBigRight({ ...btnIconProps, color: "#134e4a" })}
+            onClick={() => {
+              handleClick(routeURIList[fwdIdx]);
+            }}
+            variant="light"
+            classNames={{ label: "text-teal-900 text-sm" }}
+            size={isMobile ? "compact-xs" : "compact-md"}
+          >
+            {routeNameList[fwdIdx]}
+          </Button>
+        ) : null}
       </Group>
     </Group>
   );
