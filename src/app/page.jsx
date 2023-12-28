@@ -1,7 +1,5 @@
+import HomeLayout from "@/app/components/home/HomeLayout";
+
 export default function Home() {
-  return (
-    <>
-      <h1 className="text-2xl"> This is Home Page </h1>
-    </>
-  );
+  return <HomeLayout />;
 }
