@@ -1,13 +1,6 @@
 "use client";
 
-import {
-  SimpleGrid,
-  ScrollArea,
-  Text,
-  Image,
-  Divider,
-  Paper,
-} from "@mantine/core";
+import { SimpleGrid, ScrollArea, Text, Image, Divider } from "@mantine/core";
 
 import Education from "@/app/components/about-me/Education";
 import WorkEx from "@/app/components/about-me/WorkEx";
@@ -52,8 +45,8 @@ const AboutMeLayout = (props) => {
               w="100px"
               src={`${basePath}/images/about-me/bg/${bgImage}`}
               style={{
-                zIndex: -1,
-                filter: "blur(0.5px) opacity(30%)",
+                zIndex: -9999,
+                filter: "blur(1px) opacity(17%)",
                 position: "absolute",
                 right: "1em",
                 top: "5em",

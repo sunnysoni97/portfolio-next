@@ -159,7 +159,15 @@ if __name__ == "__main__":
         ["title", "desc", "imgUrl", "repoUrl", "highlight"],
         ["year", "title", "desc"],
         ["year", "month", "title", "desc", "imgUrl"],
-        ["start_year", "start_month", "end_year", "end_month", "title", "desc"],
+        [
+            "start_year",
+            "start_month",
+            "end_year",
+            "end_month",
+            "title",
+            "employer",
+            "desc",
+        ],
         [
             "start_year",
             "start_month",
