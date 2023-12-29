@@ -1,13 +1,42 @@
-import { Text } from "@mantine/core";
+"use client";
+
+import { Divider, Text } from "@mantine/core";
+
+import LoadEduData from "@/app/components/about-me/LoadData/LoadEduData";
+import GetMonthStr from "@/app/components/common/GetMonthStr";
+
+const EduBlock = ({ listItem, showGpa }) => {
+  return (
+    <div>
+      <Text className="!font-bold">{listItem.title}</Text>
+      <Text className="!font-bold">{listItem.subject}</Text>
+      <Text>{listItem.instituition}</Text>
+      <Text className="!text-sm">{listItem.location}</Text>
+      {showGpa === true ? (
+        <Text className="!text-sm !font-bold"> {`GPA : ${listItem.gpa}`}</Text>
+      ) : null}
+      <Text className="!text-sm !font-bold">{`${GetMonthStr(
+        listItem.start_month
+      )} ${listItem.start_year} - ${GetMonthStr(listItem.end_month)} ${
+        listItem.end_year
+      }`}</Text>
+      <Divider my="md" w="5%" mx="auto" size="lg" />
+    </div>
+  );
+};
 
 const Education = (props) => {
-  const loremIpsum =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+  const edu_data = LoadEduData();
+
+  if (edu_data == undefined) {
+    return;
+  }
+
   return (
-    <div style={{ zIndex: 9999 }}>
-      <Text> {loremIpsum} </Text>
-      <Text> {loremIpsum} </Text>
-      <Text> {loremIpsum} </Text>
+    <div>
+      {edu_data.map((item, index) => {
+        return <EduBlock listItem={item} key={index} showGpa={false} />;
+      })}
     </div>
   );
 };

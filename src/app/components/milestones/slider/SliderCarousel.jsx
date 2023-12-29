@@ -7,6 +7,7 @@ import Autoplay from "embla-carousel-autoplay";
 
 import { basePath } from "../../../../../next.config";
 import CheckMobile from "@/app/components/common/CheckMobile";
+import GetMonthStr from "@/app/components/common/GetMonthStr";
 
 const CarouselCard = ({ entryData }) => {
   const isMobile = CheckMobile();
@@ -59,12 +60,6 @@ const SliderCarousel = ({ yearData, selectedSlide, setSelectedSlide }) => {
     );
   }
 
-  const getMonthStr = (monthNum) => {
-    const date = new Date();
-    date.setMonth(monthNum - 1);
-    return date.toLocaleString("en-US", { month: "long" });
-  };
-
   return (
     <Flex
       align="center"
@@ -107,7 +102,7 @@ const SliderCarousel = ({ yearData, selectedSlide, setSelectedSlide }) => {
           {yearData[selectedSlide].desc}
           <br />
           <Text className="opacity-50 inline !text-sm !font-bold">
-            ({getMonthStr(yearData[selectedSlide].month)})
+            ({GetMonthStr(yearData[selectedSlide].month)})
           </Text>
         </Text>
       </Stack>
