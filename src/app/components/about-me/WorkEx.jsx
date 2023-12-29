@@ -4,7 +4,6 @@ import LoadWorkEx from "@/app/components/about-me/LoadData/LoadWorkEx";
 import GetMonthStr from "@/app/components/common/GetMonthStr";
 
 const WorkExEntry = ({ listItem }) => {
-  console.log(listItem);
   return (
     <div>
       <Text className="!font-bold !text-lg" display="inline">
