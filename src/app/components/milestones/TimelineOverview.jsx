@@ -25,7 +25,7 @@ const TimelineOverview = (props) => {
   return (
     <>
       <Timeline
-        w={isMobile ? "80%" : "95%"}
+        w={isMobile ? "100%" : "100%"}
         mx="auto"
         active={overviewData.length - 1}
         bulletSize={40}

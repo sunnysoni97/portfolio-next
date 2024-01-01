@@ -4,6 +4,7 @@ import { Stack, Image, Text, Flex } from "@mantine/core";
 import { Carousel } from "@mantine/carousel";
 import { useState, useCallback, useEffect, useRef } from "react";
 import Autoplay from "embla-carousel-autoplay";
+import { InnerShadowBottom, InnerShadowTop } from "tabler-icons-react";
 
 import { basePath } from "../../../../../next.config";
 import CheckMobile from "@/app/components/common/CheckMobile";
@@ -75,19 +76,36 @@ const SliderCarousel = ({ yearData, selectedSlide, setSelectedSlide }) => {
         height={isMobile ? 300 : 500}
         slideSize="100%"
         controlSize={36}
-        controlsOffset="md"
+        controlsOffset="lg"
         withIndicators
         classNames={{
           indicator: "!bg-orange-500",
           indicators: "w-[99%]",
-          control: "!border-transparent !bg-transparent",
+          control: "!border-transparent !bg-transparent !shadow-none",
+          controls: "h-[80%] top-[10%]",
         }}
         getEmblaApi={setEmbla}
         loop
-        w={{ base: "90%", xl: "65%" }}
+        w={{ base: "100%", xl: "65%" }}
         plugins={[autoplay.current]}
         onMouseEnter={autoplay.current.stop}
         onMouseLeave={autoplay.current.reset}
+        nextControlIcon={
+          <InnerShadowBottom
+            color={"rgb(154 52 18)"}
+            strokeWidth={2}
+            opacity={0.6}
+            size={isMobile ? 24 : 32}
+          />
+        }
+        previousControlIcon={
+          <InnerShadowTop
+            color={"rgb(154 52 18)"}
+            strokeWidth={2}
+            opacity={0.6}
+            size={isMobile ? 24 : 32}
+          />
+        }
       >
         {yearData.map((entry, index) => {
           return (
@@ -97,7 +115,7 @@ const SliderCarousel = ({ yearData, selectedSlide, setSelectedSlide }) => {
           );
         })}
       </Carousel>
-      <Stack w={{ base: "90%", xl: "35%" }}>
+      <Stack w={{ base: "100%", xl: "35%" }}>
         <Text className="!text-base !text-center">
           {yearData[selectedSlide].desc}
           <br />
