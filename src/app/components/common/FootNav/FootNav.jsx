@@ -38,6 +38,8 @@ const FootNav = (props) => {
       justify="space-between"
       gap="xs"
       px={{ base: "sm", md: "md" }}
+      pr="unset"
+      {...(isMobile ? { pl: "unset" } : {})}
       align="center"
       wrap="nowrap"
     >
