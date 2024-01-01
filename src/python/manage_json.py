@@ -41,8 +41,9 @@ def handle_menu(menu_options, menu_functions) -> Callable:
         return handle_menu(menu_options=menu_options, menu_functions=menu_functions)
 
 
-def add_project(json_data: List[dict], json_keys: List[str], file_path: Path) -> None:
+def add_project(json_keys: List[str], file_path: Path) -> None:
     try:
+        json_data = create_or_read_list(json_path=file_path)
         new_project = {}
         for key in json_keys:
             new_value = input(f"{key} : ")
@@ -61,7 +62,8 @@ def add_project(json_data: List[dict], json_keys: List[str], file_path: Path) ->
         return
 
 
-def view_list(json_data: List[dict], json_keys: List[str], file_path: Path) -> None:
+def view_list(json_keys: List[str], file_path: Path) -> None:
+    json_data = create_or_read_list(json_path=file_path)
     print("List of Projects : ")
     i = 0
     for proj in json_data:
@@ -70,8 +72,9 @@ def view_list(json_data: List[dict], json_keys: List[str], file_path: Path) -> N
     return
 
 
-def edit_project(json_data: List[dict], json_keys: List[str], file_path: Path) -> None:
+def edit_project(json_keys: List[str], file_path: Path) -> None:
     try:
+        json_data = create_or_read_list(json_path=file_path)
         proj_n = int(input("Select project to edit (n): "))
         if proj_n >= 0 and proj_n < len(json_data):
             old_proj = json_data[proj_n]
@@ -92,8 +95,9 @@ def edit_project(json_data: List[dict], json_keys: List[str], file_path: Path) -
         return
 
 
-def reorder_list(json_data: List[dict], json_keys: List[str], file_path: Path) -> None:
+def reorder_list(json_keys: List[str], file_path: Path) -> None:
     try:
+        json_data = create_or_read_list(json_path=file_path)
         proj_n = int(input("Select project number to reorder : "))
         if proj_n >= 0 and proj_n < len(json_data):
             new_n = int(input("Select new position : "))
@@ -107,8 +111,9 @@ def reorder_list(json_data: List[dict], json_keys: List[str], file_path: Path) -
         return
 
 
-def del_project(json_data: List[dict], json_keys: List[str], file_path: Path) -> None:
+def del_project(json_keys: List[str], file_path: Path) -> None:
     try:
+        json_data = create_or_read_list(json_path=file_path)
         proj_n = int(input("Select project number to delete : "))
         if proj_n >= 0 and proj_n < len(json_data):
             confirm = input("Are you sure ? (y/n) : ")
@@ -121,7 +126,7 @@ def del_project(json_data: List[dict], json_keys: List[str], file_path: Path) ->
         return
 
 
-def exit(json_data: List[dict], json_keys: List[str], file_path: Path) -> None:
+def exit(json_keys: List[str], file_path: Path) -> None:
     print("exiting program")
     sys.exit(0)
 
@@ -188,4 +193,4 @@ if __name__ == "__main__":
 
     while True:
         func = handle_menu(menu_options=MENU_OPTS, menu_functions=MENU_FUNCS)
-        func(json_data=json_data, json_keys=json_keys, file_path=file_path)
+        func(json_keys=json_keys, file_path=file_path)
