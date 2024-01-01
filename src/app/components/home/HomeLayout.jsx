@@ -1,6 +1,6 @@
 "use client";
 
-import { Text, Image, Paper, Button, Stack } from "@mantine/core";
+import { Text, Image, Paper, Button, Stack, Box } from "@mantine/core";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -41,12 +41,18 @@ const HomeLayout = (props) => {
       <Text className="!font-bold">Section Overview</Text>
       {linkData.map((value, index) => {
         return (
-          <Text key={index} style={{ whiteSpace: "pre-wrap" }} my="sm">
-            <Link href={value[0]} className="no-underline !text-sky-700">
+          <Box key={index} my="sm">
+            <Link
+              href={value[0]}
+              className="no-underline !text-sky-700"
+              style={{ display: "inline" }}
+            >
               <b>{value[1]}...</b>
             </Link>
-            {` ${value[2]}`}
-          </Text>
+            <Text style={{ whiteSpace: "pre-wrap" }} display="inline">
+              {` ${value[2]}`}
+            </Text>
+          </Box>
         );
       })}
       <center>

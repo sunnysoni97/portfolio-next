@@ -1,6 +1,7 @@
 "use client";
 
-import { Stack, Image, Text, Flex } from "@mantine/core";
+import { Stack, Image, Text, Flex, Modal } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
 import { Carousel } from "@mantine/carousel";
 import { useState, useCallback, useEffect, useRef } from "react";
 import Autoplay from "embla-carousel-autoplay";
@@ -30,6 +31,8 @@ const CarouselCard = ({ entryData }) => {
 const SliderCarousel = ({ yearData, selectedSlide, setSelectedSlide }) => {
   const autoplay = useRef(Autoplay({ delay: 4000 }));
   const [embla, setEmbla] = useState(null);
+  const [modalOpened, { open, close }] = useDisclosure(false);
+  const [modalData, setModalData] = useState({});
   const isMobile = CheckMobile();
 
   const handleDescChange = useCallback(() => {
@@ -58,69 +61,97 @@ const SliderCarousel = ({ yearData, selectedSlide, setSelectedSlide }) => {
   }
 
   return (
-    <Flex
-      align="center"
-      direction={{ base: "column", xl: "row" }}
-      columnGap="xl"
-      rowGap={{ base: "xs" }}
-      justify={{ base: "flex-start" }}
-      wrap="nowrap"
-      mx="auto"
-    >
-      <Carousel
-        orientation="vertical"
-        height={isMobile ? 300 : 500}
-        slideSize="100%"
-        controlSize={36}
-        controlsOffset="lg"
-        withIndicators
-        classNames={{
-          indicator: "!bg-orange-500",
-          indicators: "w-[99%]",
-          control: "!border-transparent !bg-transparent !shadow-none",
-          controls: "h-[80%] top-[10%]",
-        }}
-        getEmblaApi={setEmbla}
-        loop
-        w={{ base: "100%", xl: "65%" }}
-        plugins={[autoplay.current]}
-        onMouseEnter={autoplay.current.stop}
-        onMouseLeave={autoplay.current.reset}
-        nextControlIcon={
-          <InnerShadowBottom
-            color={"rgb(154 52 18)"}
-            strokeWidth={2}
-            opacity={0.6}
-            size={isMobile ? 24 : 32}
-          />
-        }
-        previousControlIcon={
-          <InnerShadowTop
-            color={"rgb(154 52 18)"}
-            strokeWidth={2}
-            opacity={0.6}
-            size={isMobile ? 24 : 32}
-          />
-        }
+    <>
+      <Flex
+        align="center"
+        direction={{ base: "column", xl: "row" }}
+        columnGap="xl"
+        rowGap={{ base: "xs" }}
+        justify={{ base: "flex-start" }}
+        wrap="nowrap"
+        mx="auto"
       >
-        {yearData.map((entry, index) => {
-          return (
-            <Carousel.Slide key={index} h="100%">
-              <CarouselCard entryData={entry} />
-            </Carousel.Slide>
-          );
-        })}
-      </Carousel>
-      <Stack w={{ base: "100%", xl: "35%" }}>
-        <Text className="!text-base !text-center">
-          {yearData[selectedSlide].desc}
-          <br />
-          <Text className="opacity-50 inline !text-sm !font-bold">
+        <Carousel
+          orientation="vertical"
+          height={isMobile ? 300 : 500}
+          slideSize="100%"
+          controlSize={36}
+          controlsOffset="sm"
+          withIndicators
+          classNames={{
+            indicator: "!bg-orange-500",
+            indicators: "w-[99%]",
+            control: "!border-transparent !bg-transparent !shadow-none",
+            // controls: "h-[10%] top-[5%]",
+          }}
+          getEmblaApi={setEmbla}
+          loop
+          w={{ base: "100%", xl: "65%" }}
+          plugins={[autoplay.current]}
+          onMouseEnter={autoplay.current.stop}
+          onMouseLeave={autoplay.current.reset}
+          nextControlIcon={
+            <InnerShadowBottom
+              color={"rgb(154 52 18)"}
+              strokeWidth={2}
+              opacity={0.6}
+              size={isMobile ? 24 : 32}
+            />
+          }
+          previousControlIcon={
+            <InnerShadowTop
+              color={"rgb(154 52 18)"}
+              strokeWidth={2}
+              opacity={0.4}
+              size={isMobile ? 24 : 32}
+            />
+          }
+        >
+          {yearData.map((entry, index) => {
+            return (
+              <Carousel.Slide
+                key={index}
+                h="100%"
+                onClick={() => {
+                  setModalData(entry);
+                  open();
+                }}
+              >
+                <CarouselCard entryData={entry} />
+              </Carousel.Slide>
+            );
+          })}
+        </Carousel>
+        <Stack w={{ base: "100%", xl: "35%" }}>
+          <Text className="text-center">{yearData[selectedSlide].desc}</Text>
+          <Text className="opacity-50 !text-sm !font-bold text-center">
             ({GetMonthStr(yearData[selectedSlide].month)})
           </Text>
-        </Text>
-      </Stack>
-    </Flex>
+        </Stack>
+      </Flex>
+      <Modal.Root
+        onClose={close}
+        opened={modalOpened}
+        size="lg"
+        padding="0"
+        shadow="xl"
+        centered
+      >
+        <Modal.Overlay blur={3} opacity={0.9} />
+        <Modal.Content>
+          <Modal.Body>
+            <Modal.CloseButton className="!absolute !z-10 right-[1em] top-[1em] !bg-transparent !text-black !shadow-lg !shadow-neutral-500 !rounded-2xl" />
+            <Image
+              src={`${basePath}/${modalData.imgUrl}`}
+              alt={`Image in Milestones : ${modalData.title}`}
+              fit="contain"
+              w="100%"
+              pos="relative"
+            />
+          </Modal.Body>
+        </Modal.Content>
+      </Modal.Root>
+    </>
   );
 };
 
