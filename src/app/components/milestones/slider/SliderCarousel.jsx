@@ -49,10 +49,6 @@ const SliderCarousel = ({ yearData, selectedSlide, setSelectedSlide }) => {
     setSelectedSlide(0);
   }, [yearData, setSelectedSlide]);
 
-  useEffect(() => {
-    console.log(`selected slide : ${selectedSlide}`);
-  }, [selectedSlide]);
-
   if (yearData.length == 0) {
     return (
       <Text className="text-center !text-lg">

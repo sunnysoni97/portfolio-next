@@ -3,6 +3,11 @@
 import { Slider, Text } from "@mantine/core";
 
 const SliderControl = ({ sliderData, selectedYearSetter }) => {
+  if (sliderData === undefined) {
+    return;
+  } else if (sliderData.length === 0) {
+    return;
+  }
   const yearLow = parseInt(sliderData[0].year);
   const yearHigh = parseInt(sliderData[sliderData.length - 1].year);
 

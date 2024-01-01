@@ -32,7 +32,11 @@ const TimelineSlider = (props) => {
   }, [selectedYear, sliderData]);
 
   useEffect(() => {
-    setSelectedYear(parseInt(sliderData[0].year));
+    if (sliderData != undefined) {
+      if (sliderData.length > 0) {
+        setSelectedYear(parseInt(sliderData[0].year));
+      }
+    }
   }, [sliderData]);
 
   sliderData.sort((a, b) => {
