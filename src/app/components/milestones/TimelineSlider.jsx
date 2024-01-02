@@ -49,14 +49,14 @@ const TimelineSlider = (props) => {
 
   return (
     <Stack py="lg">
-      <div className="w-[75%] mx-auto">
+      <div className="w-[95%] mx-auto">
         <SliderControl
           sliderData={sliderData}
           selectedYearSetter={setSelectedYear}
         />
       </div>
       <br />
-      <div className="w-[75%] mx-auto">
+      <div className="w-[90%] mx-auto">
         <SliderCarousel
           yearData={selectedYearData}
           selectedSlide={selectedSlide}

@@ -2,12 +2,15 @@
 
 import { Slider, Text } from "@mantine/core";
 
+import CheckMobile from "@/app/components/common/CheckMobile";
+
 const SliderControl = ({ sliderData, selectedYearSetter }) => {
   if (sliderData === undefined) {
     return;
   } else if (sliderData.length === 0) {
     return;
   }
+  const isMobile = CheckMobile();
   const yearLow = parseInt(sliderData[0].year);
   const yearHigh = parseInt(sliderData[sliderData.length - 1].year);
 
@@ -34,7 +37,9 @@ const SliderControl = ({ sliderData, selectedYearSetter }) => {
           timingFunction: "linear",
         }}
         size="lg"
-        classNames={{ markLabel: "font-bold !text-lg" }}
+        classNames={{
+          markLabel: `font-bold ${isMobile ? "!text-xs" : "!text-lg"}`,
+        }}
       />
     </>
   );

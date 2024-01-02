@@ -49,13 +49,19 @@ const SliderCarousel = ({ yearData, selectedSlide, setSelectedSlide }) => {
   }, [embla, handleDescChange]);
 
   useEffect(() => {
+    if (!embla) {
+      return;
+    }
     setSelectedSlide(0);
-  }, [yearData, setSelectedSlide]);
+    embla.scrollTo(0);
+  }, [yearData, setSelectedSlide, embla]);
 
   if (yearData.length == 0) {
     return (
-      <Text className="text-center !text-lg">
-        {"Uh Oh... Seems it wasn't very eventful this year :)"}
+      <Text className="text-center">
+        {
+          "Unfortunately, I don't have any photos to exhibit this year. The summary is in the overview."
+        }
       </Text>
     );
   }
@@ -82,7 +88,6 @@ const SliderCarousel = ({ yearData, selectedSlide, setSelectedSlide }) => {
             indicator: "!bg-orange-500",
             indicators: "w-[99%]",
             control: "!border-transparent !bg-transparent !shadow-none",
-            // controls: "h-[10%] top-[5%]",
           }}
           getEmblaApi={setEmbla}
           loop
