@@ -7,7 +7,7 @@ import CheckMobile from "@/app/components/common/CheckMobile";
 const SliderControl = ({ sliderData, selectedYearSetter }) => {
   if (sliderData === undefined) {
     return;
-  } else if (sliderData.length === 0) {
+  } else if (sliderData.length == 0) {
     return;
   }
   const isMobile = CheckMobile();

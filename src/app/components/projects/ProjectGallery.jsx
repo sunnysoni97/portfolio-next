@@ -1,12 +1,16 @@
 "use client";
 
-import { SimpleGrid } from "@mantine/core";
+import { SimpleGrid, Text } from "@mantine/core";
 
 import ProjectCard from "@/app/components/projects/ProjectCard";
 import LoadProjects from "@/app/components/projects/LoadProjects";
 
 const ProjectGallery = (props) => {
   const project_list = LoadProjects();
+
+  if (project_list.length == 0) {
+    return <Text>No Projects to Display!</Text>;
+  }
 
   return (
     <SimpleGrid

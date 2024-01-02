@@ -24,9 +24,7 @@ const ProjectCard = ({
       withBorder
     >
       <Card.Section inheritPadding withBorder>
-        <Text
-          className={`${isMobile ? "!text-lg" : "!text-xl"} !font-bold !py-2`}
-        >
+        <Text className={`${isMobile ? "" : "!text-lg"} !font-bold !py-2`}>
           {title}
         </Text>
       </Card.Section>
@@ -46,7 +44,7 @@ const ProjectCard = ({
             showLabel="Read More"
             maxHeight={150}
             classNames={{
-              content: `${isMobile ? "text-base" : "text-lg"} text-justify`,
+              content: `text-justify`,
             }}
           >
             {desc}
@@ -62,13 +60,13 @@ const ProjectCard = ({
                 <CodeCircle
                   size={isMobile ? 18 : 24}
                   strokeWidth={isMobile ? 1.25 : 1.5}
-                  color="rgb(99 102 241)"
+                  color="rgb(37 99 235)"
                 />
               }
               variant="subtle"
               size={isMobile ? "compact-sm" : "compact-md"}
               classNames={{
-                label: `${isMobile ? "text-sm" : "text-sm"} text-indigo-600`,
+                label: `text-blue-600`,
               }}
             >
               {"View Repository"}

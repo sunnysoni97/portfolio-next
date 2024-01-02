@@ -12,7 +12,7 @@ import LoadProjects from "@/app/components/projects/LoadProjects";
 
 import { basePath } from "../../../../next.config";
 
-const CarouselSlide = ({ title, desc, imgUrl, repoUrl }) => {
+const CarouselSlide = ({ title, subHead, desc, imgUrl, repoUrl }) => {
   const router = useRouter();
   const isMobile = CheckMobile();
 
@@ -33,41 +33,40 @@ const CarouselSlide = ({ title, desc, imgUrl, repoUrl }) => {
           fit="cover"
         />
 
-        <Stack justify="flex-start" px="xs" w={isMobile ? "60%" : "50%"}>
-          <div
-            className={`${
-              isMobile ? "h-[15%] pt-2" : "h-[20%] pt-6"
-            }  flex justify-start items-start`}
+        <Stack
+          px="xs"
+          py="md"
+          w={isMobile ? "60%" : "50%"}
+          justify="space-between"
+        >
+          <Text
+            className={`${isMobile ? "!text-base" : "!text-lg"} !font-bold`}
           >
-            <Text
-              className={`${isMobile ? "!text-base" : "!text-xl"} !font-bold`}
-            >
-              {title}
-            </Text>
-          </div>
-          <div
-            className={`${
-              isMobile ? "h-[70%] py-2" : "h-[65%] py-6"
-            } flex  items-start `}
+            {title}
+          </Text>
+          <Text
+            style={{ whiteSpace: "pre-wrap" }}
+            className={`${isMobile ? "!text-xs" : ""}`}
+          >{`${subHead}`}</Text>
+          <Text
+            className={`${isMobile ? "!text-sm" : "!text-base"}`}
+            h="60%"
+            style={{ overflow: "clip" }}
           >
-            <Text
-              className={`${
-                isMobile ? "!text-base" : "!text-lg"
-              } !text-justify`}
-            >
-              {`${isMobile ? desc.slice(0, 40) : desc.slice(0, 100)}...`}
-            </Text>
-          </div>
-          <div className="flex h-[15%] justify-center items-center">
-            <Button
-              onClick={() => {
-                router.push(repoUrl);
-              }}
-              variant="transparent"
-              size={isMobile ? "compact-sm" : "compact-md"}
-            >
-              {"Check It Out!"}
-            </Button>
+            {`${isMobile ? desc.slice(0, 100) : desc.slice(0, 400)}...`}
+          </Text>
+          <div className="h-[10%]">
+            <center>
+              <Button
+                onClick={() => {
+                  router.push(repoUrl);
+                }}
+                variant="transparent"
+                size={isMobile ? "compact-xs" : "compact-md"}
+              >
+                {"Check It Out!"}
+              </Button>
+            </center>
           </div>
         </Stack>
       </Group>
@@ -88,6 +87,8 @@ const ProjectCarousel = (props) => {
         highlightList.push(project);
       }
     }
+  } else {
+    return <Text>No Projects to Display!</Text>;
   }
 
   return (
@@ -99,7 +100,7 @@ const ProjectCarousel = (props) => {
           size={isMobile ? 24 : 36}
           strokeWidth={2}
           color={"rgb(154 52 18)"}
-          opacity={0.5}
+          opacity={0.4}
         />
       }
       previousControlIcon={
@@ -130,6 +131,7 @@ const ProjectCarousel = (props) => {
           <Carousel.Slide key={index}>
             <CarouselSlide
               title={proj.title}
+              subHead={proj.subHead}
               desc={proj.desc}
               imgUrl={proj.imgUrl}
               repoUrl={proj.repoUrl}

@@ -84,10 +84,10 @@ def edit_project(json_keys: List[str], file_path: Path) -> None:
                 new_key = input(f"{key} : ")
                 if len(new_key) > 0:
                     json_data[proj_n][key] = new_key
-            if "highlight" in json_keys:
-                json_data[proj_n]["highlight"] = json.loads(
-                    json_data[proj_n]["highlight"].lower()
-                )
+                    if key == "highlight":
+                        json_data[proj_n][key] = json.loads(
+                            json_data[proj_n][key].lower()
+                        )
             write_list(json_obj=json_data, file_path=file_path)
     except Exception as ex:
         print(f"failed to edit : {ex}")
@@ -161,7 +161,7 @@ if __name__ == "__main__":
         Path("about-me", "_posts", "edu_data.json"),
     ]
     tgt_json_keys = [
-        ["title", "desc", "imgUrl", "repoUrl", "highlight"],
+        ["title", "subHead", "desc", "imgUrl", "repoUrl", "highlight"],
         ["year", "title", "desc"],
         ["year", "month", "title", "desc", "imgUrl"],
         [

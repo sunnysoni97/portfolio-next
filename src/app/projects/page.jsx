@@ -12,7 +12,7 @@ export const metadata = {
 export default function Projects() {
   return (
     <>
-      <Text className="!text-lg">
+      <Text>
         {
           "On this page, you can find a list of some of the interesting works I have been a part of. These works are available publicly through my "
         }
@@ -27,11 +27,11 @@ export default function Projects() {
         }
       </Text>
       <br />
-      <h2 className="text-2xl font-bold">{"Spotlight"}</h2>
+      <h2 className="text-xl font-bold">{"Spotlight"}</h2>
       <br />
       <ProjectCarousel />
       <br />
-      <h2 className="text-2xl font-bold">{"List of Projects"}</h2>
+      <h2 className="text-xl font-bold">{"List of Projects"}</h2>
       <br />
       <ProjectGallery />
     </>
