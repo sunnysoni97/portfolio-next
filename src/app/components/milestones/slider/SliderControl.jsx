@@ -23,7 +23,7 @@ const SliderControl = ({ sliderData, selectedYearSetter }) => {
   return (
     <>
       <Text className="text-center !text-sm !font-bold opacity-50">
-        {"(Drag the slider to any year)"}
+        {"(Drag the slider to any year; Click image to enlarge)"}
       </Text>
       <br />
       <Slider
