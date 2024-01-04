@@ -1,6 +1,6 @@
 "use client";
 
-import { Card, Image, Button, Spoiler, Text } from "@mantine/core";
+import { Card, Image, Button, Spoiler, Text, Stack } from "@mantine/core";
 import { useRouter } from "next/navigation";
 import { CodeCircle } from "tabler-icons-react";
 import CheckMobile from "@/app/components/common/CheckMobile";
@@ -37,8 +37,8 @@ const ProjectCard = ({
         />
       </Card.Section>
 
-      <Card.Section inheritPadding withBorder>
-        <div className="py-2">
+      <Card.Section inheritPadding withBorder h="100%">
+        <Stack justify="space-between" h="100%" py={isMobile ? "sm" : "md"}>
           <Spoiler
             hideLabel="Show Less"
             showLabel="Read More"
@@ -49,30 +49,30 @@ const ProjectCard = ({
           >
             {desc}
           </Spoiler>
-        </div>
-        <center>
-          <div className="py-2">
-            <Button
-              onClick={() => {
-                router.push(repoUrl);
-              }}
-              rightSection={
-                <CodeCircle
-                  size={isMobile ? 18 : 24}
-                  strokeWidth={isMobile ? 1.25 : 1.5}
-                  color="rgb(37 99 235)"
-                />
-              }
-              variant="subtle"
-              size={isMobile ? "compact-sm" : "compact-md"}
-              classNames={{
-                label: `text-blue-600`,
-              }}
-            >
-              {"View Repository"}
-            </Button>
-          </div>
-        </center>
+          <center>
+            <div className="py-2">
+              <Button
+                onClick={() => {
+                  router.push(repoUrl);
+                }}
+                rightSection={
+                  <CodeCircle
+                    size={isMobile ? 18 : 24}
+                    strokeWidth={isMobile ? 1.25 : 1.5}
+                    color="rgb(37 99 235)"
+                  />
+                }
+                variant="subtle"
+                size={isMobile ? "compact-sm" : "compact-md"}
+                classNames={{
+                  label: `text-blue-600`,
+                }}
+              >
+                {"View Repository"}
+              </Button>
+            </div>
+          </center>
+        </Stack>
       </Card.Section>
     </Card>
   );
