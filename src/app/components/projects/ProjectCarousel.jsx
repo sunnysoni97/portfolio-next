@@ -26,9 +26,9 @@ const CarouselSlide = ({ title, subHead, desc, imgUrl, repoUrl }) => {
         justify="space-between"
       >
         <Image
-          classNames={{ root: "!rounded-l-lg" }}
+          classNames={{ root: "!rounded-l-lg flex-1" }}
           src={`${basePath}/${imgUrl}`}
-          alt={`Banner image of Project : ${desc}`}
+          alt={`Banner image of Project : ${title}`}
           w={isMobile ? "40%" : "50%"}
           fit="cover"
         />
