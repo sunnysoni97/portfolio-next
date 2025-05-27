@@ -1,1 +1,85 @@
-[{"start_year": "2023", "start_month": "2", "end_year": "2023", "end_month": "9", "title": "Student Researcher", "employer": "Qualcomm UvA Lab", "desc": "Worked on a novel research project in the field of Computer Vision and Federated Learning under the supervision of Dr. Yuki M. Asano (UvA) and Dr. Aaqib Saeed (TU/E). Paper under review in int\u2019l conference."}, {"start_year": "2022", "start_month": "11", "end_year": "2023", "end_month": "11", "title": "Junior Data Scientist", "employer": "Vintus NL", "desc": "Worked on building an intelligent database querying platform with NLP using Azure Cloud Platform, SQL, and related technology stack."}, {"start_year": "2022", "start_month": "6", "end_year": "2022", "end_month": "10", "title": "Student Teaching Assistant", "employer": "VU Amsterdam", "desc": "Supervised bachelors with practical sessions in courses of Swarm Intelligence and Computer Programming with C++."}, {"start_year": "2019", "start_month": "8", "end_year": "2019", "end_month": "10", "title": "Software Engineering Intern", "employer": "IRCTC", "desc": "Worked on NLP based project called AskDisha (AI based chatbot to help people in ticketing)."}, {"start_year": "2019", "start_month": "6", "end_year": "2019", "end_month": "7", "title": "API Development Intern", "employer": "PayTM", "desc": "Worked on JAVA frameworks such as Spring and JS frameworks such as NodeJS in the backend development team."}]
+[
+	{
+		"start_year": "2024",
+		"start_month": "9",
+		"end_year": "Present",
+		"title": "AI Engineer",
+		"employer": "Vintus",
+		"desc": "Working as an AI Engineer and Software Developer, designing and engineering new solutions from scratch. Tasks also include providing consultancy to external clients on various business cases.",
+		"skills": [
+			"Python",
+			"Typescript",
+			".NET",
+			"Machine Learning",
+			"FastAPI",
+			"Django",
+			"Svelte",
+			"React"
+		]
+	},
+
+	{
+		"start_year": "2023",
+		"start_month": "2",
+		"end_year": "2023",
+		"end_month": "9",
+		"title": "Student Researcher",
+		"employer": "Qualcomm UvA Lab",
+		"desc": "Worked on a novel research project in the field of Computer Vision and Federated Learning under the supervision of Dr. Yuki M. Asano (UvA) and Dr. Aaqib Saeed (TU/E). Paper published in IEEE Proceedings of the CVPR Workshops 2024.",
+		"skills": [
+			"Python",
+			"LateX",
+			"Machine Learning",
+			"Federated Learning",
+			"PyTorch",
+			"Flower"
+		]
+	},
+	{
+		"start_year": "2022",
+		"start_month": "11",
+		"end_year": "2023",
+		"end_month": "11",
+		"title": "Junior Data Scientist",
+		"employer": "Vintus",
+		"desc": "Worked on building an intelligent database querying platform with NLP using Azure Cloud Platform, SQL, and related technology stack.",
+		"skills": [
+			"Python",
+			"Javascript",
+			"PyTorch",
+			"FastAPI",
+			"Django",
+			"React"
+		]
+	},
+	{
+		"start_year": "2022",
+		"start_month": "6",
+		"end_year": "2022",
+		"end_month": "10",
+		"title": "Student Teaching Assistant",
+		"employer": "VU Amsterdam",
+		"desc": "Supervised bachelors with practical sessions in courses of Swarm Intelligence and Computer Programming with C++.",
+		"skills": ["C++", "Python", "Simulations (Dynamic Swarm Systems)"]
+	},
+	{
+		"start_year": "2019",
+		"start_month": "8",
+		"end_year": "2019",
+		"end_month": "10",
+		"title": "Software Engineering Intern",
+		"employer": "IRCTC",
+		"desc": "Worked on NLP based project called AskDisha (AI based chatbot to help people in ticketing).",
+		"skills": ["AngularJS", "NLP"]
+	},
+	{
+		"start_year": "2019",
+		"start_month": "6",
+		"end_year": "2019",
+		"end_month": "7",
+		"title": "API Development Intern",
+		"employer": "PayTM",
+		"desc": "Worked on JAVA frameworks such as Spring and JS frameworks such as NodeJS in the backend development team.",
+		"skills": ["Java", "Javascript", "Spring Framework"]
+	}
+]

@@ -14,8 +14,8 @@ import CheckMobile from "@/app/components/common/CheckMobile";
 const AboutMeLayout = (props) => {
   const isMobile = CheckMobile();
   const divList = [
-    ["Education", "education.png", Education],
     ["Work Experience", "experience.png", WorkEx],
+    ["Education", "education.png", Education],
     ["Tech Knowledge", "tech.png", TechKnowledge],
     ["Research Interests", "research.png", ResearchInterests],
     ["Hobbies", "hobbies.png", Hobbies],
