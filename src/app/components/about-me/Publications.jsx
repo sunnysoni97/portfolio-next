@@ -25,7 +25,7 @@ const Publications = (props) => {
 						<List.Item key={index}>
 							<Text>
 								{" "}
-								{item.authors}, "{item.title},"{" "}
+								{item.authors}, &ldquo;{item.title},&rdquo;{" "}
 								{item.conference}, {item.page_reference},{" "}
 								<a href={`https://doi.org/${item.doi}`}>
 									doi: {item.doi}
