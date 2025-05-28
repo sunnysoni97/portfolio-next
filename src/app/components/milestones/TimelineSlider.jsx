@@ -8,63 +8,65 @@ import SliderControl from "@/app/components/milestones/slider/SliderControl";
 import SliderCarousel from "@/app/components/milestones/slider/SliderCarousel";
 
 const getYearData = ({ completeData, year }) => {
-  const selectedData = [];
-  for (const entry of completeData) {
-    if (parseInt(entry.year) == year) {
-      selectedData.push(entry);
-    }
-  }
-  return selectedData;
+	const selectedData = [];
+	for (const entry of completeData) {
+		if (parseInt(entry.year) == year) {
+			selectedData.push(entry);
+		}
+	}
+	return selectedData;
 };
 
 const TimelineSlider = (props) => {
-  const [selectedYear, setSelectedYear] = useState(0);
-  const [selectedYearData, setSelectedYearData] = useState([]);
-  const [selectedSlide, setSelectedSlide] = useState(0);
+	const [selectedYear, setSelectedYear] = useState(0);
+	const [selectedYearData, setSelectedYearData] = useState([]);
+	const [selectedSlide, setSelectedSlide] = useState(0);
 
-  const sliderData = LoadSliderData();
+	const sliderData = LoadSliderData();
 
-  useEffect(() => {
-    setSelectedSlide(0);
-    setSelectedYearData(
-      getYearData({ completeData: sliderData, year: selectedYear })
-    );
-  }, [selectedYear, sliderData]);
+	useEffect(() => {
+		setSelectedSlide(0);
+		setSelectedYearData(
+			getYearData({ completeData: sliderData, year: selectedYear })
+		);
+	}, [selectedYear, sliderData]);
 
-  useEffect(() => {
-    if (sliderData != undefined) {
-      if (sliderData.length > 0) {
-        setSelectedYear(parseInt(sliderData[0].year));
-      }
-    }
-  }, [sliderData]);
+	useEffect(() => {
+		if (sliderData != undefined) {
+			if (sliderData.length > 0) {
+				setSelectedYear(
+					parseInt(sliderData[sliderData.length - 1].year)
+				);
+			}
+		}
+	}, [sliderData]);
 
-  sliderData.sort((a, b) => {
-    const ord = parseInt(a.year) - parseInt(b.year);
-    if (ord == 0) {
-      return parseInt(a.month) - parseInt(b.month);
-    }
-    return ord;
-  });
+	sliderData.sort((a, b) => {
+		const ord = parseInt(a.year) - parseInt(b.year);
+		if (ord == 0) {
+			return parseInt(a.month) - parseInt(b.month);
+		}
+		return ord;
+	});
 
-  return (
-    <Stack py="lg">
-      <div className="w-[95%] mx-auto">
-        <SliderControl
-          sliderData={sliderData}
-          selectedYearSetter={setSelectedYear}
-        />
-      </div>
-      <br />
-      <div className="w-[90%] mx-auto">
-        <SliderCarousel
-          yearData={selectedYearData}
-          selectedSlide={selectedSlide}
-          setSelectedSlide={setSelectedSlide}
-        />
-      </div>
-    </Stack>
-  );
+	return (
+		<Stack py="lg">
+			<div className="w-[95%] mx-auto">
+				<SliderControl
+					sliderData={sliderData}
+					selectedYearSetter={setSelectedYear}
+				/>
+			</div>
+			<br />
+			<div className="w-[90%] mx-auto">
+				<SliderCarousel
+					yearData={selectedYearData}
+					selectedSlide={selectedSlide}
+					setSelectedSlide={setSelectedSlide}
+				/>
+			</div>
+		</Stack>
+	);
 };
 
 export default TimelineSlider;
